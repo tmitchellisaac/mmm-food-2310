@@ -1,0 +1,15 @@
+<h3> Foods Index Page </h3>
+
+
+<h1> Total Hits for "<%= @facade.q.capitalize%>": <%= @facade.total_hits %></h1>
+
+<section>
+  <% @facade.foods.each_with_index do |food, index| %>
+    <h3> <%= index+1 %>. Description: </h3><%= food.description %>
+    <h3> Brand: </h3><%= food.brand %>
+    <h3> Ingredients: </h3> <%= food.ingredients %>
+    <h3> GTIN/UPC: </h3> <%= food.gtinupc %>
+    <br>
+    ------------------------------------------------
+  <% end %>
+</section>
