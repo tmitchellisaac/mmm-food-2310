@@ -8,7 +8,7 @@ class FoodFacade
 
   def foods
     service = FoodService.new.food_search(@q)[:foods]
-    m = service.map do |food_data|
+    service.map do |food_data|
       Food.new(food_data)
     end
   end
