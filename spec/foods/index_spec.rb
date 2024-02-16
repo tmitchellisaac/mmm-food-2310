@@ -27,7 +27,7 @@ RSpec.describe "index page", type: :feature do
               'User-Agent'=>'Faraday v2.9.0'
         }).
       to_return(status: 200, body: sweet_potatoes, headers: {})
-      
+
     visit root_path
 
     fill_in :q, with: "sweet potatoes"
@@ -45,5 +45,8 @@ RSpec.describe "index page", type: :feature do
     expect(page).to have_content("SWEET POTATOES")
     expect(page).to have_content("The Pictsweet Company")
     expect(page).to have_content("SWEET POTATOES.")
+
+    facade = FoodFacade.new(q: "sweet potatoes")
+    expect(facade.foods.count).to eq(10)
   end
 end
